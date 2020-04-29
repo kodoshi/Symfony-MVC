@@ -1,0 +1,14 @@
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit profile{% endblock %}
+
+{% block body %}
+    <div class="container w-50 mt-3 border col">
+        <h1>Edit user</h1>
+        {{ include('profile/editform.html.twig',{'button_label' : 'Update'}) }}
+        <div class="d-flex justify-content-between mb-3">
+        <a class="btn btn-secondary" href="{{ path('profile_show', {'id': user.id}) }}"> Back </a>
+        </div>
+    </div
+{% endblock %}

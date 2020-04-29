@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Movie{% endblock %}
+
+{% block body %}
+<article class="jumbotron jumbotron-fluid">
+    <span class='row justify-content-md-center'><img src = "https://image.tmdb.org/t/p/w300{{ movie.poster_path }}"></span><br>
+    <h2 class='row justify-content-md-center'>{{ movie.title }}</h2><br>
+    {% if movie.tagline is defined %}
+        <h4 class='row justify-content-md-center'>{{ movie.tagline }}</h4><br>
+    {% endif %}
+    <span class='row justify-content-md-center'>{{ movie.overview }}</span><br>
+    <span class='row justify-content-md-center'>Homepage: <a href= "{{ movie.homepage }}">{{ movie.homepage }}</a></span><br>
+    <span class='row justify-content-md-center'>Release date: {{ movie.release_date}}</span><br>
+    <span class='row justify-content-md-center'>Average note: {{ movie.vote_average}}</span><br>
+
+    
+</article>
+
+{% endblock %}

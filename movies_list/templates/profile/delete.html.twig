@@ -1,0 +1,16 @@
+
+
+{% block title %}Delete user{% endblock %}
+
+{% block body %}
+    <div class="container w-50 mt-3 border col">
+        <h1>Delete User</h1>
+       <form method="post" action ="{{ path('profile_delete', {'id' : user.id} )}}"
+       onsubmit="return confirm('Are you sure ?')">
+        <input type="hidden" name"_method" value="DELETE">
+        
+        <div class="d-flex justify-content-between mb-3">
+        <a class="btn btn-secondary"> Delete my account </a>
+        </div>
+    </div
+{% endblock %}
