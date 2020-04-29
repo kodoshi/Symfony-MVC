@@ -1,0 +1,70 @@
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Create List{% endblock %}
+
+{% block body %}
+<div class="container mt-2">
+    <h2>My Lists : </h2>
+    <table class="table table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Author</th>
+                <th>Share</th>
+                <th>Go to </th>
+            </tr>
+        </thead>
+        <tbody>
+    {% for list in lists %}
+        {% if list.author.id == user.id %}
+        <td>{{ list.id }}</td>
+        <td>{{ list.name }}</td>
+        <td>{{ list.description }}</td>
+        <td>{{ list.author.name }}</td>  
+        <td>{{ list.share ? 'Yes' : 'No' }}  
+        <td class="d-inline-block d-flex">
+        <a class="btn btn-dark" href="{{ path('lists_edit', {'id': list.id}) }}">Edit List</a>
+        <a class="btn btn-dark" href="{{ path('lists_show', {'id': list.id}) }}">Show List</a>
+        </tr>
+        {% endif %}
+        {% endfor %}  
+            </tbody>
+        </table>    
+   </div> 
+   <div class="container mt-2">
+   <h2>Shared Lists </h2>
+   <table class="table table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Author</th>
+                <th>Share</th>
+                <th>Go to </th>
+            </tr>
+        </thead>
+        <tbody>
+    {% for list in lists %}
+        {% if list.share == true %}
+        <td>{{ list.id }}</td>
+        <td>{{ list.name }}</td>
+        <td>{{ list.description }}</td>
+        <td>{{ list.author.name }}</td>  
+        <td>{{ list.share ? 'Yes' : 'No' }}  
+        <td class="d-inline-block d-flex">
+        {# <a class="btn btn-dark" href="{{ path('lists_edit', {'id': list.id}) }}">Edit List</a> #}
+        <a class="btn btn-dark" href="{{ path('lists_show', {'id': list.id}) }}">Show List</a>
+        </tr>
+    {% endif %} 
+    {% endfor %} 
+      
+            </tbody>
+        </table>    
+   </div>
+       <a class="btn btn-dark" href="{{ path('lists_new') }}">New List</a>
+
+{% endblock %}
